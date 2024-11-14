@@ -1,0 +1,16 @@
+body {
+   background: black;
+
+}
+
+
+img {
+   width: 200px;
+   height: 200px;
+}
+
+p {
+   color: white;
+   font-size: xxx-large;
+   font-family: Avenir, Helvetica, sans-serif;
+}
