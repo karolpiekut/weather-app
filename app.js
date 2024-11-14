@@ -20,15 +20,15 @@ async function getWeather() {
 const moonSVG = document.createElement('img');
 moonSVG.src = 'icons/clear-night.svg';
 const partlyCloudySVG = document.createElement('img');
-partlyCloudySVG.src = 'icons/partly-cloudy.svg';
+partlyCloudySVG.src = 'icons/partly-cloudy-day.svg';
 const snowSVG = document.createElement('img');
 snowSVG.src = 'icons/snow.svg';
 const sunnySVG = document.createElement('img');
-sunnySVG.src = 'icons/sunny.svg';
+sunnySVG.src = 'icons/clear-day.svg';
 const rainSVG = document.createElement('img');
 rainSVG.src = 'icons/rain.svg';
 const thunderstormSVG = document.createElement('img');
-thunderstormSVG.src = 'icons/thunderstorm.svg';
+thunderstormSVG.src = 'icons/thunder.svg';
 const cloudySVG = document.createElement('img');
 cloudySVG.src = 'icons/cloudy.svg';
 
@@ -50,9 +50,12 @@ function addWeatherData(par) {
     app.appendChild(par);
 }
 
-function changeTemp(par) {
-
+function changeToC(temp) {
+    return ((temp - 32) * 5/9).toFixed(1);
 }
+
+
+
 
 (async () => {
     let currentPlace = (await getWeather())
@@ -74,6 +77,7 @@ function changeTemp(par) {
     addWeatherData(humidity);
     addWeatherData(feelsLikeTemp);
     addWeatherData(uvIndex);
+    console.log(changeToC(currentPlace.currentConditions.temp))
 })()
 
 
