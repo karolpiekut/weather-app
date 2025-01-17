@@ -1,10 +1,17 @@
 body {
    background: black;
-
 }
 
+#app {
+   margin-left: auto;
+   margin-right: auto;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   width: 450px;
+}
 
-img {
+#weatherIcon {
    width: 200px;
    height: 200px;
 }
@@ -13,4 +20,62 @@ p {
    color: white;
    font-size: xxx-large;
    font-family: Avenir, Helvetica, sans-serif;
+}
+
+#results {
+   display: flex;
+   flex-direction: row;
+}
+
+#imgDiv {
+   height: 200px;
+   padding: 0 5px 0 5px;
+}
+
+#values {
+   display: flex;
+   flex-direction: column;
+   height: 200px;
+}
+
+#location {
+   height: 100px;
+   margin: 0;
+   padding: 30px 5px 0 5px;
+   display: flex;
+   align-items: center;
+}
+
+#temperature {
+   height: 100px;
+   margin: 0;
+   padding: 0 5px 30px 5px;
+   display: flex;
+   align-items: center;
+}
+
+#controls {
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   gap: 5px;
+   margin-left: 90px;
+}
+
+#inputLocation {
+   height: 25px;
+   width: 150px;
+}
+
+
+#changeToFahrenheit, #changeToCelsius {
+   height: 30px;
+   width: 30px;
+   border: none;
+   background-color: rgba(56, 56, 56, 0.5);
+   color: white;
+}
+
+#changeToFahrenheit:hover, #changeToCelsius:hover {
+   background-color: darkorange;
 }

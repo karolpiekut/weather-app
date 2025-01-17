@@ -32,13 +32,24 @@ thunderstormSVG.src = 'icons/thunder.svg';
 const cloudySVG = document.createElement('img');
 cloudySVG.src = 'icons/cloudy.svg';
 
-const searchResult = document.createElement('p');
-const temperature = document.createElement('p');
-const windSpeed = document.createElement('p');
-const precipitation = document.createElement('p');
-const humidity = document.createElement('p');
-const feelsLikeTemp = document.createElement('p');
-const uvIndex = document.createElement('p');
+const locationOutput = document.querySelector('#location');
+const temperature = document.querySelector('#temperature');
+const cButton = document.querySelector('#changeToCelsius');
+const fButton = document.querySelector('#changeToFahrenheit');
+
+
+let locationVar = "New York";  //zbędne, zastąp text content w środku funkcji na dole (async)
+let temperatureVar = 38.7;
+
+//temperature.innerText = temperatureVar + "°";
+locationOutput.innerText = locationVar;
+
+//future reference
+// const windSpeed = document.createElement('p');
+// const precipitation = document.createElement('p');
+// const humidity = document.createElement('p');
+// const feelsLikeTemp = document.createElement('p');
+// const uvIndex = document.createElement('p');
 
 const app = document.querySelector("#app");
 
@@ -54,31 +65,35 @@ function changeToC(temp) {
     return ((temp - 32) * 5/9).toFixed(1);
 }
 
-
-
+function amendToCelsius(val) {
+    temperature.innerText = (changeToC(val)) + "°";
+}
 
 (async () => {
     let currentPlace = (await getWeather())
-    console.log(currentPlace)
-    if (currentPlace['currentConditions'].icon === 'clear-night') {
-        addWeatherIcon(moonSVG);
-    }
-    searchResult.textContent = currentPlace.address;
-    temperature.textContent = currentPlace.currentConditions.temp;
-    windSpeed.textContent = currentPlace.currentConditions.windspeed;
-    precipitation.textContent = currentPlace.currentConditions.precip;
-    humidity.textContent = currentPlace.currentConditions.humidity;
-    feelsLikeTemp.textContent = currentPlace.currentConditions.feelslike;
-    uvIndex.textContent = currentPlace.currentConditions.uvindex;
-    addWeatherData(searchResult);
-    addWeatherData(temperature);
-    addWeatherData(windSpeed);
-    addWeatherData(precipitation);
-    addWeatherData(humidity);
-    addWeatherData(feelsLikeTemp);
-    addWeatherData(uvIndex);
-    console.log(changeToC(currentPlace.currentConditions.temp))
+    // if (currentPlace['currentConditions'].icon === 'clear-night') {
+    //     addWeatherIcon(moonSVG);
+    // }
+    // searchResult.textContent = currentPlace.address;
+    // temperature.textContent = currentPlace.currentConditions.temp;
+
+    // addWeatherData(searchResult);
+    // addWeatherData(temperature);
+    //temperatureVar =  currentPlace.currentConditions.temp
+    temperature.innerText = currentPlace.currentConditions.temp + "F";
+    locationOutput.innerText = currentPlace.address;
+    //console.log(currentPlace.currentConditions.conditions);
+
+    cButton.addEventListener('click', function() {
+      amendToCelsius(currentPlace.currentConditions.temp);
+        //console.log(event.target.id);
+    });
+
+    fButton.addEventListener('click', function() {
+        temperature.innerText = currentPlace.currentConditions.temp + "F";
+    })
 })()
+
 
 
 
