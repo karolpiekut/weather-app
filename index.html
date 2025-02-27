@@ -12,7 +12,7 @@
 <div id="app">
     <div id="results">
         <div id="imgDiv">
-            <img id="weatherIcon" src="weather-icons/snow.svg" alt="snow">
+            <img id="weatherIcon" src="" alt=""/>
         </div>
         <div id="values">
             <p id="location"></p>
@@ -20,9 +20,9 @@
         </div>
     </div>
     <div id ="controls">
-        <input type="text" id="inputLocation" placeholder="Search" required>
-        <label for="inputLocation" id="inputLocation-label" hidden>Enter location</label>
-        <input type="submit" hidden />
+        <input type="text" id="searchBox" placeholder="Search" required>
+        <label for="searchBox" id="inputLocation-label" hidden>Enter location</label>
+        <input id="submitBtn" type="submit"/>
         <div id="unitControls">
             <button id="changeToCelsius">°C</button>
             <button id="changeToFahrenheit">F</button>
